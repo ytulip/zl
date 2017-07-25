@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/weui.css"/>
+<title>手机绑定</title>
+<style>
+    html,body{width: 100%;height: 100%;background-color: #fbfbfb;}
+    #bind-phone{padding: 22px 10px;}
+    /*.weui-input{background-color: #ffffff;}*/
+    .phone-input{width: 100%;line-height: 44px;background-color: #ffffff;border-radius: 50px;margin-bottom: 20px;padding: 0 25px;box-sizing: border-box;height: auto;}
+    .get-code{background-color: #ffffff;border-radius: 50px;margin-bottom: 30px;padding: 0 25px;}
+    .weui-cell:before{border: none;}
+</style>
+<body>
+    <form id="bind-phone">
+        <!--<input type="text" placeholder="请输入您的手机号" class="phone-input"/>-->
+
+                <input class="weui-input phone-input" type="text"  pattern="[0-9]*" placeholder="请输入您的手机号码">
+        <div class="weui-cell get-code">
+
+            <div class="weui-cell__bd">
+                <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入4位验证码">
+            </div>
+            <div class="weui-cell__hd">
+                <a><span style="display: inline-block;line-height: 44px;color:#2966E2;">获取验证码</span></a>
+            </div>
+        </div>
+
+        <a href="javascript:;" class="weui-btn weui-btn_plain-primary">确认</a>
+    </form>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+</html>
