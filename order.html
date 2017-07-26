@@ -1,0 +1,491 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/weui.css"/>
+<title>今日订单</title>
+<link href="css/mui.css" rel="stylesheet"/>
+<style>
+    .mui-table-view-cell{background-color: #fbfbfb;padding: 18px 10px;}
+    .mui-table-view-cell.mui-active {
+        background-color: #fbfbfb;
+    }
+
+    .mui-active {background-color: #fbfbfb !important;}
+
+    .mui-navigate-right{margin: 0 !important;padding: 0 !important;padding-left: 54px !important;}
+    .mui-navigate-right:after, .mui-push-right:after {
+        right: 0 !important;
+    }
+    .order-no{
+        position: absolute;
+        top:0;
+        left: 0;
+        font-size: 14px;
+        color: #2966E2;
+    }
+
+    .order-store{font-size: 16px;
+        color: #222222;line-height: 22px;margin-bottom: 5px;display: inline-block}
+
+    .order-cook{
+        font-size: 12px;
+        color: #999999;
+        display: inline-block;
+        line-height: 17px;
+    }
+
+    .detail-btn {
+        font-size: 14px;
+        color: #2966E2;
+        /*line-height: 32px;*/
+        border: 1px solid #2966E2;
+        border-radius: 30px;
+        width: 96px;
+    }
+
+    h3{
+        font-size: 12px;
+        color: #000000;
+        font-weight: normal;
+        display: inline-block;
+        position: relative;
+        line-height: 17px;
+        margin-bottom: 10px;
+    }
+
+    h3:after{
+        content:"";
+        position: absolute;
+        bottom: -1px;
+        right: 0;
+        left: 0;
+        border-top:solid 1px #000000;
+    }
+
+    .food-classify{
+        margin-bottom: 10px;
+    }
+
+    .food-classify p{
+        font-size: 12px;
+        color: #222222;}
+    footer{
+        background: #FFFFFF;
+        box-shadow: 0 -2px 6px 0 rgba(0,0,0,0.10);
+        height: 48px;
+        padding: 0!important;
+        z-index: 99;
+        text-align: center;
+    }
+
+    footer img{
+        display: inline-block;
+    }
+</style>
+<body>
+<ul class="mui-table-view" id="data-tab" style="margin-bottom: 60px;">
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+           <div class="food-classify">
+               <h3>蔬菜</h3>
+               <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                   萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+           </div>
+           <div class="food-classify">
+               <h3>肉类</h3>
+               <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                   斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                   、大虾300斤、鲫鱼120斤</p>
+           </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+    <li class="mui-table-view-cell mui-collapse">
+        <a class="mui-navigate-right" href="#">
+            <span class="order-no">#919</span>
+            <span class="order-store">御厨 大新路店</span><br/>
+            <span class="order-cook">厨师李 20:30</span>
+            <span  style="font-size:14px;color:#999999;position:absolute;top:50%;right:20px;    display: inline-block;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);">0个商品</span></a>
+        <div class="mui-collapse-content" style="font-size:0;padding-left:10px;" >
+            <div class="food-classify">
+                <h3>蔬菜</h3>
+                <p>西兰花60斤、青椒130斤、洋葱530斤、土豆200斤、白菜400斤、
+                    萝卜100斤、大葱80斤、豆角200斤、茄子500斤</p>
+            </div>
+            <div class="food-classify">
+                <h3>肉类</h3>
+                <p>五花肉30斤、鸭腿200斤、牛肉100斤、鸡胸肉50斤、羊肉200
+                    斤、猪脚90斤、牛排100斤、大肠40斤、鸡腿100斤、田鸡20斤
+                    、大虾300斤、鲫鱼120斤</p>
+            </div>
+            <a href="javascript:;" class="weui-btn detail-btn" style="margin-bottom: 20px;">查看详情</a>
+        </div>
+    </li>
+</ul>
+<footer style="position: fixed;bottom: 0;right: 0;left: 0;" class="weui-cell">
+    <a class="weui-cell__bd" style="height:100%;border-right: 1px solid #dddddd;display: flex;align-items: center;justify-content: center;">
+        <img src="images/q1.png"/>
+    </a>
+    <a class="weui-cell__bd" style="height: 100%;display: flex;align-items: center;justify-content: center;">
+        <img src="images/q2.png"/>
+    </a>
+</footer>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/mui.min.js"></script>
+</html>
