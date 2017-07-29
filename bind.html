@@ -11,6 +11,9 @@
     .phone-input{width: 100%;line-height: 44px;background-color: #ffffff;border-radius: 50px;margin-bottom: 20px;padding: 0 25px;box-sizing: border-box;height: auto;}
     .get-code{background-color: #ffffff;border-radius: 50px;margin-bottom: 30px;padding: 0 25px;}
     .weui-cell:before{border: none;}
+    .send-ok-btn{background: #2966E2;
+        border-radius: 50px;width: 190px;line-height: 44px; }
+    .get-code-lock span{color:#999999 !important;}
 </style>
 <body>
     <form id="bind-phone">
@@ -27,7 +30,7 @@
             </div>
         </div>
 
-        <a href="javascript:;" class="weui-btn weui-btn_plain-primary">确认</a>
+        <a href="javascript:;" class="weui-btn send-ok-btn">确认</a>
     </form>
 </body>
 <script src="js/jquery-1.8.3.min.js"></script>
@@ -38,6 +41,7 @@
                 return null;
             }
 
+            $(this).addClass('get-code-lock');
             $(this).attr('data-second',60);
             $(this).find('span').html($(this).attr('data-second') + '秒');
             (function(a){

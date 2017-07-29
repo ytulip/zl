@@ -82,8 +82,11 @@
     footer img{
         display: inline-block;
     }
+
+    .pullDown p{text-align: center;margin-top: 10px;}
 </style>
 <body>
+<div class="pullDown"></div>
 <ul class="mui-table-view" id="data-tab" style="margin-bottom: 60px;">
     <li class="mui-table-view-cell mui-collapse">
         <a class="mui-navigate-right" href="#">
@@ -488,4 +491,60 @@
 </body>
 <script src="js/jquery-1.8.3.min.js"></script>
 <script src="js/mui.min.js"></script>
+<script>
+    $(function(){
+        var startY = 0;
+        var startTop = 0;
+        var moveY = 0;
+        var refresh = false;
+        document.querySelector('#data-tab').addEventListener('touchstart',function(e){
+//            e.preventDefault();
+            startY = e.targetTouches[0].screenY;
+            startTop = $(document).scrollTop();
+            //console.log($(document).scrollTop());
+        });
+        document.querySelector('#data-tab').addEventListener('touchmove',function(e){
+//            e.preventDefault();
+            moveY = e.targetTouches[0].screenY;
+            var move = moveY - startY;
+            if(move > 0 && (move > startTop)) {
+                var pull = move - startTop;
+//                alert(123);
+                //$('#data-tab').attr('style','transform:translateY('+pull+');-webkit-transform:translateY('+pull+')');
+                $('#data-tab').attr('style',"margin-bottom: 60px;transform: translateY("+pull+"px);-webkit-transform: translateY("+pull+"px);");
+                if(pull > 10 && pull < 50){
+                    if(refresh === true){
+                        refresh = false;
+                    }
+
+                    $('.pullDown').html('<p class="loosen-refresh">下拉刷新</p>');
+                }
+
+                if(pull > 49){
+                    if(refresh === true){
+                        return;
+                    }else{
+                        //增加松开刷新标识
+                        $('.pullDown').html('<p class="loosen-refresh">松开刷新</p>');
+                        refresh = true;
+                    }
+                }
+
+
+            } else {
+               $('.pullDown').html('');
+               refresh = false;
+            }
+//            this.ptop = this.ptop + (this.movePoint.y - this.startPoint.y);
+        });
+        document.querySelector('#data-tab').addEventListener('touchend',function(e){
+            $('.pullDown').html('');
+            $('#data-tab').attr('style',"margin-bottom: 60px;");
+            if(refresh) {
+                alert('执行刷新逻辑！');
+                refresh = false;
+            }
+        });
+    });
+</script>
 </html>
