@@ -115,9 +115,17 @@
     .btn-red{display: inline-block;line-height: 26px;
         border-radius: 30px;padding: 0 20px;box-sizing: border-box;font-size: 12px;background: #F15A24;color:#ffffff;}
      .open-btn{position: absolute;right: 10px;top:20px;}
+    .bag-dialog{
+        background: rgba(0, 0, 0, 0.6);
+        width: 182px;
+        height: 110px;
+        background-image: url(images/bag.png);
+        background-size: 182px 110px;
+    }
+
 </style>
 <body>
-<div class="notice"><span style="margin-left: 10px;margin-right: 10px;"><i class="notice-img"></i></span><span>欢迎使用餐饮业订单助手——单单</span></div>
+<div class="notice"><span style="margin-left: 10px;margin-right: 10px;"><i class="notice-img"></i></span><span>推荐一个好友，就得到一个红包；好友使用，还能得到红包</span></div>
 <div class="common-info">
     <p class="gray-12">红包余额</p>
     <div class="" style="position: relative"><span class="money-total">￥48.50</span><div class="btn-position"><a class="btn-this color-b">全部提现</a><a class="btn-this color-g">提现记录</a></div></div>
@@ -148,7 +156,7 @@
             </div>
         </div>
         <div class="li-body">
-            <div><span class="money-li">￥6</span><span class="flex-span"><i class="hongbao-icon"></i></span><div class="flex-span" style="float: right;margin-right: 10px;"><a class="gray-12  btn-red">拆</a></div></div>
+            <div><span class="money-li">￥6</span><span class="flex-span"><i class="hongbao-icon"></i></span><div class="flex-span" style="float: right;margin-right: 10px;"><a class="gray-12  btn-red" onclick="openHongbao(12.58)">拆</a></div></div>
         </div>
     </li>
 
@@ -164,15 +172,15 @@
         </div>
         <div class="li-footer">
             <div class="li-footer-barring"></div>
-            <div style="margin-top: 20px;margin-bottom: 20px;"><span class="gray-12">来自xxx的福利</span><br/><span class="read-12">一起拆可以获得更大额的金额</span></div>
+            <div style="margin-top: 20px;padding-bottom: 20px;"><span class="gray-12">来自xxx的福利</span><br/><span class="read-12">一起拆可以获得更大额的金额</span></div>
             <div class="open-btn">
-                <a class="gray-12  btn-red">拆一个</a>
-                <a class="gray-12  btn-red">全部拆开</a>
+                <a class="gray-12  btn-red" onclick="openHongbao(12.58)">拆一个</a>
+                <a class="gray-12  btn-red" onclick="openHongbao(10.58)">全部拆开</a>
             </div>
         </div>
     </li>
 </ul>
-
+<img style="width: 0;height: 0;overflow: hidden" src="images/bag.png"/>
 </body>
 <script src="js/jquery-1.8.3.min.js"></script>
 <script>
@@ -193,6 +201,17 @@
             }
         });
 
+        $('body').on('click','.js_dialog',function(){
+            $('.js_dialog').remove();
+        })
+
+
     });
+
+    function openHongbao(money) {
+        var innerHtml = '<div class="js_dialog" id="iosDialog2" style="opacity:1"><div class="weui-mask"></div><div class="weui-dialog bag-dialog"><span style="font-size:30px;color:#F8E81C;transform:translateY(40px);display:inline-block">'+money+'元</span></div></div>';
+        $('body').append(innerHtml);
+    }
+
 </script>
 </html>

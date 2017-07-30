@@ -37,7 +37,7 @@
         <div>
         <p style="margin-bottom: 10px;">解除绑定</p>
         <p class="mark-p" style="margin-bottom: 30px;">当您不再需要当前微信接单时，使用该功能。</p>
-        <a href="javascript:;" class="weui-btn send-ok-btn" style="background-color: #c5c5c5;">解除绑定</a>
+        <a href="javascript:;" class="weui-btn send-ok-btn" style="background-color: #c5c5c5;" onclick="confirmUnbind()">解除绑定</a>
         </div>
     </div>
 </div>
@@ -57,11 +57,17 @@
 <p class="mark-p">目前只支持供应商绑定后接单，餐厅绑定后无法完成下单和审核</p>
 </div>
 
-
 </body>
 <script src="js/jquery-1.8.3.min.js"></script>
 <script>
     $(function(){
+        $('body').on('click','.weui-dialog__btn_default',function(){
+            $('.js_dialog').remove();
+        });
     });
+    function confirmUnbind(){
+        var innerHtml = '<div class="js_dialog" id="androidDialog2" style="opacity:1"><div class="weui-mask"></div><div class="weui-dialog weui-skin_android"><div class="weui-dialog__bd" style="font-size:18px;color:#222;text-align:center">确定解除绑定</div><div class="weui-dialog__ft" style="text-align:center;position:relative"><a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" style="position:absolute;top:0;left:0;height:32px;display:inline-block;line-height:32px">返回</a> <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" style="border:1px solid #2966E2;border-radius:30px;color:#2966E2;line-height:30px;padding:0 20px">确定</a></div></div></div>';
+        $('body').append(innerHtml);
+    }
 </script>
 </html>
