@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/weui.css"/>
+<title>我的红包</title>
+<link href="css/style.css" rel="stylesheet"/>
+<style>
+    html,body{background-color: #f5f5f5;}
+    .mui-table-view-cell{background-color: #fbfbfb;padding: 18px 10px;}
+    .mui-table-view-cell.mui-active {
+        background-color: #fbfbfb;
+    }
+
+    .mui-active {background-color: #fbfbfb !important;}
+
+    .mui-navigate-right{margin: 0 !important;padding: 0 !important;padding-left: 54px !important;}
+    .mui-navigate-right:after, .mui-push-right:after {
+        right: 0 !important;
+    }
+    .order-no{
+        position: absolute;
+        top:0;
+        left: 0;
+        font-size: 14px;
+        color: #2966E2;
+    }
+
+    .order-store{font-size: 16px;
+        color: #222222;line-height: 22px;margin-bottom: 5px;display: inline-block}
+
+    .order-cook{
+        font-size: 12px;
+        color: #999999;
+        display: inline-block;
+        line-height: 17px;
+    }
+
+    .detail-btn {
+        font-size: 14px;
+        color: #2966E2;
+        /*line-height: 32px;*/
+        border: 1px solid #2966E2;
+        border-radius: 30px;
+        width: 96px;
+    }
+
+    h3{
+        font-size: 12px;
+        color: #000000;
+        font-weight: normal;
+        display: inline-block;
+        position: relative;
+        line-height: 17px;
+        margin-bottom: 10px;
+    }
+
+    h3:after{
+        content:"";
+        position: absolute;
+        bottom: -1px;
+        right: 0;
+        left: 0;
+        border-top:solid 1px #000000;
+    }
+
+    .food-classify{
+        margin-bottom: 10px;
+    }
+
+    .food-classify p{
+        font-size: 12px;
+        color: #222222;}
+    footer{
+        background: #FFFFFF;
+        box-shadow: 0 -2px 6px 0 rgba(0,0,0,0.10);
+        height: 48px;
+        padding: 0!important;
+        z-index: 99;
+        text-align: center;
+    }
+
+    footer img{
+        display: inline-block;
+    }
+
+    .pullDown p{text-align: center;margin-top: 10px;}
+    .common-info{background: #FFFFFF;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.10);padding: 20px 15px;margin-top: 34px;margin-bottom: 20px;}
+    .money-total{line-height: 45px;font-size: 32px;color: #FE9A3A;display: inline-block;}
+    .money-li{line-height: 40px;font-size: 28px;color: #222222;display: inline-block;}
+    .btn-this{display: inline-block;line-height: 26px;border: 1px solid #2966E2;
+        border-radius: 30px;padding: 0 10px;box-sizing: border-box;font-size: 12px;}
+    .color-b {color: #2966e2;}
+    .color-g{color:#999999;border-color: #999999;margin-left: 10px;}
+    .btn-position{position: absolute;right: 0;bottom: 6.5px;}
+    .gray-12{color:#999999;font-size: 12px;}
+    .gray-14{color:#999999;font-size: 14px;}
+    .read-12{color:#ff001f;font-size: 12px;}
+    .black-12{color:#101010;font-size: 12px;}
+
+    .mui-table-view{padding: 0 10px;}
+    .mui-table-view-cell{background-color: #ffffff;padding: 0;margin-bottom: 10px;}
+    .li-header{height: 32px;background-color: #fbfbfb;padding:0 10px;}
+    .li-header .header-left{display: inline-block;line-height: 32px;}
+    .li-header .header-right{float: right;display: inline-block;line-height: 32px;}
+    .li-body{padding: 27px 10px;background-color: #ffffff;}
+    .hongbao-icon{width: 22px;height: 27px;background-image: url(images/hongbao.png);background-size:22px 27px;margin-left: 16px; display: inline-block;}
+    .flex-span{height: 40px;display: inline-flex;align-items: center;justify-content: center;width: auto;}
+    .f-r-span{line-height: 40px;float: right;}
+    .li-footer{padding: 0 10px;background-color: #ffffff;position: relative;}
+    .li-footer-barring{border: solid 1px #f2f2f2;}
+    .li-footer-text{text-align: right;}
+    .li-footer-text span{display: inline-block;line-height: 27px;}
+    .btn-red{display: inline-block;line-height: 26px;
+        border-radius: 30px;padding: 0 20px;box-sizing: border-box;font-size: 12px;background: #F15A24;color:#ffffff;}
+     .open-btn{position: absolute;right: 10px;top:20px;}
+</style>
+<body>
+<div class="notice"><span style="margin-left: 10px;margin-right: 10px;"><i class="notice-img"></i></span><span>欢迎使用餐饮业订单助手——单单</span></div>
+<div class="common-info">
+    <p class="gray-12">红包余额</p>
+    <div class="" style="position: relative"><span class="money-total">￥48.50</span><div class="btn-position"><a class="btn-this color-b">全部提现</a><a class="btn-this color-g">提现记录</a></div></div>
+</div>
+
+<ul class="mui-table-view" id="data-tab">
+    <li class="mui-table-view-cell mui-collapse">
+        <div class="li-header">
+            <div class="header-left"><span class="gray-12">推荐好友</span><span class="black-12">13811112...</span><span class="gray-12">注册成功</span></div>
+            <div class="header-right">
+                <span class="read-12">获得了一个新的红包封</span>
+            </div>
+        </div>
+        <div class="li-body">
+            <div><span class="money-li">￥6</span><span class="flex-span"><i class="hongbao-icon"></i></span><span class="flex-span"><i class="hongbao-icon"></i></span><span class="gray-12 f-r-span">来自xxx的福利</span></div>
+        </div>
+        <div class="li-footer">
+            <div class="li-footer-barring"></div>
+            <div class="li-footer-text"><span class="gray-12">此用户再使用两次，即可拆开红包获得现金</span></div>
+        </div>
+    </li>
+
+    <li class="mui-table-view-cell mui-collapse">
+        <div class="li-header">
+            <div class="header-left"><span class="gray-12">推荐好友</span><span class="black-12">13811112...</span><span class="gray-12">注册成功</span></div>
+            <div class="header-right">
+                <span class="read-12">获得了一个新的红包封</span>
+            </div>
+        </div>
+        <div class="li-body">
+            <div><span class="money-li">￥6</span><span class="flex-span"><i class="hongbao-icon"></i></span><div class="flex-span" style="float: right;margin-right: 10px;"><a class="gray-12  btn-red">拆</a></div></div>
+        </div>
+    </li>
+
+    <li class="mui-table-view-cell mui-collapse">
+        <div class="li-header">
+            <div class="header-left"><span class="gray-12">推荐好友</span><span class="black-12">13811112...</span><span class="gray-12">注册成功</span></div>
+            <div class="header-right">
+                <span class="read-12">获得了一个新的红包封</span>
+            </div>
+        </div>
+        <div class="li-body">
+            <div><span class="money-li">￥6</span><span class="flex-span"><i class="hongbao-icon"></i></span><span class="flex-span"><i class="hongbao-icon"></i></span><div class="flex-span" style="float: right;margin-right: 10px;"><a class="drawn-switch" data-id="1"><span class="gray-14">收起</span></a></div></div>
+        </div>
+        <div class="li-footer">
+            <div class="li-footer-barring"></div>
+            <div style="margin-top: 20px;margin-bottom: 20px;"><span class="gray-12">来自xxx的福利</span><br/><span class="read-12">一起拆可以获得更大额的金额</span></div>
+            <div class="open-btn">
+                <a class="gray-12  btn-red">拆一个</a>
+                <a class="gray-12  btn-red">全部拆开</a>
+            </div>
+        </div>
+    </li>
+</ul>
+
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+    $(function(){
+        $('.drawn-switch').click(function(){
+            var dataId = $(this).attr('data-id');
+            if(dataId == "1") {
+                //把它收起来
+                $(this).parents('.mui-table-view-cell').find('.li-footer').hide();
+                $(this).attr('data-id',2);
+                $(this).html('拆');
+                $(this).addClass('btn-red');
+            }else{
+                $(this).parents('.mui-table-view-cell').find('.li-footer').show();
+                $(this).attr('data-id',1);
+                $(this).removeClass('btn-red');
+                $(this).html('<span class="gray-14">收起</span>');
+            }
+        });
+
+    });
+</script>
+</html>

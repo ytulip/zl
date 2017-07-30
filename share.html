@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/weui.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<title>分享</title>
+<style>
+    html,body{width: 100%;height: 100%;background-color: #fbfbfb;}
+    #bind-phone{padding: 22px 10px;}
+    /*.weui-input{background-color: #ffffff;}*/
+    .phone-input{width: 100%;line-height: 44px;background-color: #ffffff;border-radius: 50px;margin-bottom: 20px;padding: 0 25px;box-sizing: border-box;height: auto;}
+    .get-code{background-color: #ffffff;border-radius: 50px;margin-bottom: 30px;padding: 0 25px;}
+    .weui-cell:before{border: none;}
+    .header-img{margin-top: 34px;padding-top: 25px;text-align: center;padding-bottom: 25px;}
+    /*.outline{background: rgba(153,153,153,0.15);width: 100px;height: 100px;border-radius: 100px;padding: 10px;box-sizing: border-box;}*/
+    .inner{
+        background-color: rgba(153,153,153,0.15);width: 90px;height: 90px;border-radius: 90px;display: inline-block;}
+    .my-word{text-align:center;margin-bottom: 20px;}
+    .my-word span{line-height: 20px;font-size: 14px;  color: #000000;}
+    .tuijian{line-height: 21px;font-size: 18px;
+        color: #2966E2;text-align: center;}
+    .barring{padding: 0 10px;margin-top: 20px;margin-bottom: 30px;}
+    .barring .line{border: 1px solid #f2f2f2;}
+    .send-ok-btn{background: #2966E2;
+        border-radius: 50px;width: 190px;line-height: 44px; }
+    .p-success{text-align: center;font-size: 20px;
+        color: #7ED321;margin-top: 10px;margin-bottom: 30px;}
+    .register-panel{padding: 0 10px;}
+</style>
+<body>
+    <div class="notice"><span style="margin-left: 10px;margin-right: 10px;"><i class="notice-img"></i></span><span>欢迎使用餐饮业订单助手——单单</span></div>
+    <div class="header-img">
+        <div class="outline">
+            <div class="inner"></div>
+        </div>
+    </div>
+    <p class="my-word"><span>我是Brad Frost，我为单单代言，</span><br/>
+        <span>下单接单，方便快捷还免费，</span></p>
+    <p class="tuijian">推荐你使用免费APP——单单!</p>
+
+    <div class="barring"><div class="line"></div></div>
+    <div style="display: none;">
+    <div class="t-a-c"><img src="images/ok.png"/></div>
+    <p class="p-success">注册成功</p>
+    <a href="javascript:;" class="weui-btn send-ok-btn" style="margin-bottom: 20px;">立即下载</a>
+    </div>
+
+    <div class="register-panel">
+            <input class="weui-input phone-input" type="text"  pattern="[0-9]*" placeholder="请输入您的手机号码">
+            <div class="weui-cell get-code">
+
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入4位验证码 ">
+                </div>
+                <div class="weui-cell__hd">
+                    <a class="get-code-btn"><span style="display: inline-block;line-height: 44px;color:#2966E2;">获取验证码</span></a>
+                </div>
+            </div>
+        <a href="javascript:;" class="weui-btn send-ok-btn" style="margin-bottom: 20px;">注册</a>
+    </div>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+    $(function(){
+        $('.get-code-btn').click(function(){
+            if ( $(this).hasClass('get-code-lock') ) {
+                return null;
+            }
+
+            $(this).addClass('get-code-lock');
+            $(this).attr('data-second',60);
+            $(this).find('span').html($(this).attr('data-second') + '秒');
+            (function(a){
+                var countDownHandler = setInterval(function(){
+                    $(a).attr('data-second',$(a).attr('data-second') - 1);
+                    if( $(a).attr('data-second') < 1) {
+                        clearInterval(countDownHandler);
+                        $(a).removeClass('get-code-lock');
+                        $(a).find('span').html('获取验证码');
+                        return;
+                    }
+                    $(a).find('span').html($(a).attr('data-second') + '秒');
+                },1000);
+            })(this);
+
+            //TODO:请求验证码
+
+
+        });
+    });
+</script>
+</html>
